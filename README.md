@@ -32,7 +32,15 @@ O projeto foi desenvolvido inteiramente em Python no formato de Jupyter Notebook
 6. Abra o arquivo `projeto_credito.ipynb` no VS Code ou inicie o Jupyter Lab.
 7. Execute todas as células do notebook sequencialmente.
 
-## 3. Dicionário de Dados
+## 3. Estrutura de Versionamento e Branches (Git)
+O desenvolvimento do projeto seguiu rigorosas práticas de controle de versão. Ao invés de um único commit massivo, adotamos um fluxo progressivo utilizando as seguintes ramificações (branches):
+- `fase/eda`: Destinada à análise exploratória e visualizações.
+- `fase/data-prep`: Destinada ao tratamento de nulos, duplicadas e remoção de outliers.
+- `fase/modelagem`: Destinada ao balanceamento de classes (SMOTE), escalonamento e otimização de hiperparâmetros.
+
+As ramificações foram iterativamente mescladas à branch `main`. Além disso, adotamos o padrão de **Commits Semânticos** (`feat:`, `fix:`, `docs:`) para garantir rastreabilidade e mensagens granulares no histórico.
+
+## 4. Dicionário de Dados
 Abaixo estão as principais variáveis e a nova variável calculada criada na Fase 3 do projeto:
 
 - `person_age`: Idade da pessoa.
@@ -51,7 +59,7 @@ Abaixo estão as principais variáveis e a nova variável calculada criada na Fa
 **Variável Gerada no Feature Engineering:**
 - `comprometimento_renda`: Calculado pela fórmula `(loan_amnt / person_income) * 100`. Indica o real impacto mensal/anual da dívida sobre a renda total, refinando a variável percentual existente.
 
-## 4. Resumo Executivo e Veredito (Insights)
+## 5. Resumo Executivo e Veredito (Insights)
 
 - **Análise Exploratória (EDA) & Visualização de Outliers:** Identificamos forte desbalanceamento na variável alvo, com cerca de 78% dos dados concentrados em bons pagadores. Adicionamos a plotagem de **Boxplots** (Gráfico 4) que comprovou a presença de outliers extremos e impossíveis na idade (144 anos) e tempo de emprego (123 anos).
 - **Decisão de Tratamento de Dados (Data Prep):** 
