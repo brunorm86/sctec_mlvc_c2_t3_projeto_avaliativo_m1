@@ -64,19 +64,19 @@ Abaixo estão as principais variáveis e a nova variável calculada criada na Fa
 
 ## 5. Resumo Executivo e Veredito (Insights)
 
-- **Análise Exploratória (EDA) & Visualização de Outliers:** Identificamos forte desbalanceamento na variável alvo, com cerca de 78% dos dados concentrados em bons pagadores. Adicionamos a plotagem de **Boxplots** (Gráfico 4) que comprovou a presença de outliers extremos e impossíveis na idade (144 anos) e tempo de emprego (123 anos).
-- **Decisão de Tratamento de Dados (Data Prep):** 
-    - **Imputação Robustecida:** Os nulos de person_emp_length e loan_int_rate foram tratados com a **Mediana** (em detrimento da Média), uma vez que a distribuição apresenta assimetria e caudas longas. A mediana protege a tendência central sem distorcê-la por pesos extremos.
-    - **Impacto nos Modelos:** Documentamos a justificativa pedagógica de que o **KNN** é altamente vulnerável a outliers devido ao cálculo de distâncias euclidianas n-dimensionais (que mudam de escala severamente), enquanto a **Árvore de Decisão** é imune a extremos porque utiliza cortes monotônicos binários ordenados de classes.
-- **Modelagem e Otimização com Tabelas e Gráficos:** Para o combate ao overfitting, monitoramos de perto a complexidade em **gráficos de curva e tabelas de resultados de Treino vs. Teste simultâneos**:
-    - **KNN:** Estabilizou no parâmetro ideal de K=9 (Acurácia de Treino: 92.8% | Teste: 89.0%), evitando a decoreba de vizinhos muito próximos.
-    - **Árvore de Decisão:** Sofre overfitting absoluto (Acurácia de treino 100.0% e queda de teste) se a profundidade for livre (None). A restrição robusta para max_depth=7 garantiu o melhor ponto de equilíbrio e generalização (Acurácia de Treino: 90.4% | Teste: 90.6%).
-- **Avaliação Avançada (ROC-AUC e Feature Importances):** Para consolidar o veredito, adicionamos o gráfico de **Feature Importances**, que revela visualmente as regras mais impactantes na recusa do empréstimo, trazendo a transparência exigida pelo setor. A **Curva ROC e AUC** comprova o poder discriminativo da Árvore de Decisão perante o KNN no trade-off de Falsos Negativos e Positivos.
-- **Veredito de Negócios:** Recomendamos a **Árvore de Decisão (max_depth=7)** para implantação em produção. Ela oferece a explicabilidade regulatória exigida pelas auditorias de risco bancário (regras condicionais claras), dispensa escalonamento numérico e manteve um excelente **Recall (68%)** de classe 1 (inadimplentes), mitigando eficientemente o erro financeiro mais letal para a instituição: o **Falso Negativo** (emprestar valor principal a um mau pagador).
+- **Análise Exploratória (EDA):** A investigação inicial revelou um forte desbalanceamento na variável alvo (78% de clientes adimplentes). Além disso, o uso de **Boxplots** detectou anomalias extremas e impossíveis nos dados, como solicitantes com 144 anos de idade e 123 anos de tempo de emprego formal.
+- **Tratamento de Dados (Data Prep):** 
+    - **Imputação Robusta:** Valores ausentes nas variáveis chave foram preenchidos com a **Mediana** em vez da Média. Essa decisão técnica protege a tendência central da amostra contra a distorção severa que seria causada pelos outliers.
+    - **Impacto Algorítmico:** O tratamento minucioso de extremos foi imprescindível, especialmente porque algoritmos baseados em distância euclidiana, como o **KNN**, são altamente vulneráveis a variações de escala. Em contrapartida, a **Árvore de Decisão** apresentou-se inerentemente robusta a essas anomalias por utilizar particionamento monotônico.
+- **Modelagem e Controle de Overfitting:** O monitoramento contínuo das métricas entre as bases de Treino e Teste norteou a otimização dos hiperparâmetros:
+    - **KNN:** O modelo alcançou a melhor estabilidade em K=9, evitando a generalização enviesada de vizinhanças pequenas (Acurácia de Teste: 89.0%).
+    - **Árvore de Decisão:** Árvores com profundidade ilimitada sofreram severo *overfitting* (alcançando 100% no Treino e perdendo eficácia no Teste). Restringir a profundidade com a poda estrutural de max_depth=7 ofereceu o melhor compromisso entre viés e variância (Acurácia de Teste: 90.6%).
+- **Avaliação Avançada (ROC-AUC e Feature Importances):** Para reforçar a transparência exigida pelo setor de auditoria bancária, o gráfico de *Feature Importances* evidenciou que a renda comprometida e as taxas de juros são os fatores matemáticos determinantes para se assumir o risco de calote. Simultaneamente, a **Curva ROC-AUC** confirmou a superioridade discriminativa da Árvore de Decisão no balanço crítico entre Falsos Positivos e Falsos Negativos.
+- **Veredito de Negócios:** Recomendamos fortemente a implantação da **Árvore de Decisão (max_depth=7)** em ambiente produtivo. Além de dispensar a etapa de escalonamento numérico e se mostrar resiliente aos outliers, o modelo assegura a **explicabilidade regulatória**. Acima de tudo, entregou um excelente **Recall (68%)** na identificação proativa de maus pagadores, mitigando ativamente a incidência do **Falso Negativo** — o erro operacional que resulta na perda irrecuperável do valor principal emprestado e que afeta diretamente a saúde financeira da instituição.
 
 ---
 
-**Disclaimer:** Este projeto contou com o auxílio da inteligência artificial Google Gemini para suporte na sua codificação, estruturação e revisão, atuando como "pair programming" do aluno. Além disso, foi utilizada para gerar o conteúdo do arquivo Readme.md e auxiliar em dúvidas pontuais e documentação. 
+**Disclaimer:** Este projeto contou com o auxílio da inteligência artificial Google Gemini para suporte na sua codificação, estruturação e revisão, atuando como "pair programming" do aluno. Além disso, foi utilizada para gerar o conteúdo do arquivo Readme.md, organizar os commits (incluindo os padrões semânticos e de branch) e auxiliar em dúvidas pontuais e documentação do Python e bibliotecas usadas no projeto. 
 
 ---
 
