@@ -1,6 +1,13 @@
-# Projeto de Machine Learning: Risco de Crédito
+# Machine Learning e Visão Computacional [T3] - Projeto Avaliativo
+### Desenvolvimento de Pipeline Preditivo para Risco de Crédito
 
-Este repositório contém a Situação de Aprendizagem (Módulo 1) para a avaliação do Pipeline Preditivo em Ciência de Dados.
+**Instituição:** SESI/SENAI
+**Programa:** SCTEC
+**Curso:** Machine Learning e Visão Computacional
+**Turma:** 3 - Ciclo 2 (C2)
+**Módulo:** 1 - Fundamentos de Programação, Dados e Machine Learning
+**Aluno:** Bruno Ricardo Machado
+
 
 ## 1. Descrição do Problema de Negócio
 O banco/instituição financeira precisa de um modelo preditivo capaz de classificar clientes solicitantes de empréstimo entre:
@@ -25,12 +32,8 @@ O projeto foi desenvolvido inteiramente em Python no formato de Jupyter Notebook
    
    pip install -r requirements.txt
    ```
-5. Baixe a base de dados utilizando o módulo gdown (já incluso no requirements):
-   ```bash
-   gdown 1R4WCMc_56lv3fMaDalUBAz5jSxeZOcwI -O credit_risk_dataset.csv
-   ```
-6. Abra o arquivo `projeto_credito.ipynb` no VS Code ou inicie o Jupyter Lab.
-7. Execute todas as células do notebook sequencialmente.
+5. Abra o arquivo `projeto_credito.ipynb` no VS Code ou inicie o Jupyter Lab.
+6. Execute todas as células do notebook sequencialmente.
 
 ## 3. Estrutura de Versionamento e Branches (Git)
 O desenvolvimento do projeto seguiu rigorosas práticas de controle de versão. Ao invés de um único commit massivo, adotamos um fluxo progressivo utilizando as seguintes ramificações (branches):
@@ -68,4 +71,16 @@ Abaixo estão as principais variáveis e a nova variável calculada criada na Fa
 - **Modelagem e Otimização com Tabelas e Gráficos:** Para o combate ao overfitting, monitoramos de perto a complexidade em **gráficos de curva e tabelas de resultados de Treino vs. Teste simultâneos**:
     - **KNN:** Estabilizou no parâmetro ideal de K=9 (Acurácia de Treino: 92.8% | Teste: 89.0%), evitando a decoreba de vizinhos muito próximos.
     - **Árvore de Decisão:** Sofre overfitting absoluto (Acurácia de treino 100.0% e queda de teste) se a profundidade for livre (None). A restrição robusta para max_depth=7 garantiu o melhor ponto de equilíbrio e generalização (Acurácia de Treino: 90.4% | Teste: 90.6%).
+- **Avaliação Avançada (ROC-AUC e Feature Importances):** Para consolidar o veredito, adicionamos o gráfico de **Feature Importances**, que revela visualmente as regras mais impactantes na recusa do empréstimo, trazendo a transparência exigida pelo setor. A **Curva ROC e AUC** comprova o poder discriminativo da Árvore de Decisão perante o KNN no trade-off de Falsos Negativos e Positivos.
 - **Veredito de Negócios:** Recomendamos a **Árvore de Decisão (max_depth=7)** para implantação em produção. Ela oferece a explicabilidade regulatória exigida pelas auditorias de risco bancário (regras condicionais claras), dispensa escalonamento numérico e manteve um excelente **Recall (68%)** de classe 1 (inadimplentes), mitigando eficientemente o erro financeiro mais letal para a instituição: o **Falso Negativo** (emprestar valor principal a um mau pagador).
+
+---
+
+**Disclaimer:** Este projeto contou com o auxílio da inteligência artificial Google Gemini para suporte na sua codificação, estruturação e revisão, atuando como "pair programming" do aluno. Além disso, foi utilizada para gerar o conteúdo do arquivo Readme.md e auxiliar em dúvidas pontuais e documentação. 
+
+---
+
+### Dados do Autor
+- **Nome:** Bruno Ricardo Machado
+- **E-mail:** [brunorm869@gmail.com](mailto:brunorm869@gmail.com)
+- **GitHub:** [@brunorm86](https://github.com/brunorm86)

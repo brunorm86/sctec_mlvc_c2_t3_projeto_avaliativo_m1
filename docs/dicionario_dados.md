@@ -16,3 +16,4 @@ Este documento explica as variáveis presentes no dataset de risco de crédito (
 | **loan_percent_income** | Numérica (float) | Razão entre o valor do empréstimo e a renda anual do cliente. |
 | **cb_person_default_on_file** | Categórica (str) | Indica se o cliente possui histórico prévio de inadimplência registrado (`Y` = Sim, `N` = Não). |
 | **cb_person_cred_hist_length** | Numérica (int) | Tempo de histórico de crédito do cliente (em anos). |
+| **comprometimento_renda** | Numérica (float) | Percentual calculado da renda comprometida com a dívida `(loan_amnt / person_income) * 100`. |
